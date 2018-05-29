@@ -98,6 +98,7 @@ trait S3ConnectionTrait {
 			$options['signature_version'] = 'v2';
 		}
 		$this->connection = new S3Client($options);
+		$this->connection->getCredentials();
 
 		if (!$this->connection->isBucketDnsCompatible($this->bucket)) {
 			throw new \Exception("The configured bucket name is invalid: " . $this->bucket);
